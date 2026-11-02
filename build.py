@@ -1,0 +1,121 @@
+import os, html, json
+BASE = "https://amaroki2004-code.github.io/easy-apps"   # change if repo name differs
+DEV = "https://apps.apple.com/us/developer/athir-maroki/id6784476559"
+APPS = [
+ dict(slug="chaldean-easy", name="Chaldean Easy", id="6796100193",
+  icon="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/46/57/ef/4657ef4b-5880-97ac-3ab6-9981d480e54f/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+  tag="Learn spoken Chaldean (Soorath) the fun way", ar="",
+  intro="Chaldean Easy is the first app designed to teach spoken Chaldean (Soorath / Syriac / Assyrian) to English speakers, with real human voices, cartoon characters and bite-sized daily lessons.",
+  for_="Iraqi Christian diaspora families, people reconnecting with their heritage, and anyone curious about one of the world's oldest living languages.",
+  feats=["24 units covering greetings, family, food, body parts, verbs and more","Real recordings by native Chaldean speakers (male and female voices)","Games: Bubble Pop, Word Scramble, Matching Pairs, True or False and more","Flashcards, dialogues and cultural proverbs","Daily learning path with XP and streaks","Kids Mode, a grammar reference guide and a Chaldean alphabet explorer"],
+  price="Unit 1 is free, no account needed. Full access is $14.99/month or $99.99/year.", kw="learn Chaldean, Soorath, Syriac, Assyrian, Neo-Aramaic, Chaldean language app"),
+ dict(slug="learn-iraqi-arabic-easy", name="Learn Iraqi Arabic Easy", id="6807597152",
+  icon="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/72/92/e6/7292e615-f125-a9d4-7687-4d64d31905bd/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+  tag="Iraqi dialect, not textbook Arabic", ar="",
+  intro="Most Arabic apps teach Modern Standard Arabic, the formal language of news and textbooks. Learn Iraqi Arabic Easy teaches the everyday Iraqi dialect spoken by family and friends, recorded by real native Iraqi speakers.",
+  for_="Kids and grandkids of Iraqi immigrants, partners marrying into an Iraqi family, travelers, and anyone who got stuck on textbook Arabic.",
+  feats=["800+ real Iraqi Arabic words and phrases in 65+ structured lessons","Greetings, family, food, shopping, travel, jobs, emotions, emergencies and more","Animated two-speaker conversations","Simple grammar: verb conjugation, past tense, pronouns","Flashcards, matching and fill-in-the-blank games","Cultural tips behind the words"],
+  price="Free to download.", kw="Iraqi Arabic, Iraqi dialect, learn Arabic, spoken Arabic, Baghdadi"),
+ dict(slug="learn-mexican-spanish-easy", name="Learn Mexican Spanish Easy", id="6811497071",
+  icon="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c4/4f/92/c44f92e4-1bc1-07e7-aff2-8d69b86b459b/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+  tag="Speak real, everyday Mexican Spanish", ar="",
+  intro="Spanish Easy gets you speaking real, everyday Mexican Spanish through short daily lessons instead of grammar drills.",
+  for_="Beginners, travelers, and anyone connecting with Spanish-speaking family and friends across Mexico and the Southwest US.",
+  feats=["Native-voice audio for every word and phrase, never robotic text-to-speech","Pronunciation hints so you know where the stress falls","Daily lessons: family, food, numbers, colors, the market, the restaurant and more","Games and quizzes, plus dialogues between two native speakers","Culture tips and Kids Mode","No account, no ads, no data collection"],
+  price="Free to download.", kw="Mexican Spanish, learn Spanish, speak Spanish, Spanish for beginners"),
+ dict(slug="german-easy-arabic-edition", name="German Easy: Arabic Edition", id="6821470658",
+  icon="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/21/f9/25/21f92522-d527-5df9-cee2-73d1b1478ab5/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+  tag="Learn German in Arabic, from zero to A1", ar="تعلّم الألمانية بالعربية — من الصفر إلى المستوى A1",
+  intro="German Easy is the German course built for Arabic speakers, from zero to level A1. Every explanation and menu is in Arabic, every German word and sentence has clear German audio, and pronunciation is written in Arabic letters so you can read German from day one.",
+  for_="Anyone preparing for an A1 German exam (for example for a spouse visa), newcomers to Germany, Austria and Switzerland, and students and workers who want a strong start.",
+  feats=["76 lessons in 14 units covering level A1","A1 exam practice: listening, reading, writing and speaking, with Arabic explanations (our own practice material, not official exam questions)","Pronunciation written in Arabic script","Short, funny dialogues from everyday life in Germany","Journey map across Germany, unlimited flashcards and quizzes","Culture tips such as when to say du and Sie"],
+  price="Unit 1 is free. German Easy Pro unlocks everything, with a 3-day free trial on the monthly plan and a 1-week free trial on the yearly plan.", kw="learn German in Arabic, German A1, تعلم الألمانية, German for Arabic speakers"),
+ dict(slug="isbani-sahl-learn-spanish", name="Isbani Sahl – Learn Spanish", id="6824751092",
+  icon="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a0/77/39/a0773917-822d-71b4-a29b-9a87e821c242/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+  tag="Learn Spanish in Arabic (Spain)", ar="إسباني سهل — تعلّم الإسبانية بالعربية",
+  intro="Isbani Sahl (إسباني سهل) teaches the Spanish spoken in Spain to Arabic speakers. The whole app, including menus, explanations and word meanings, is in Arabic.",
+  for_="Arabs living in or moving to Spain, travelers and students.",
+  feats=["60 lessons in 11 units, from greetings and numbers to restaurants, shopping, the doctor and work","A \"Living in Spain\" unit: government offices, empadronamiento, NIE and TIE, opening a bank account","Clear help with ser vs estar, and tú vs usted","Every word has a picture, Spanish audio, Arabic audio and a pronunciation hint in Arabic letters","Dialogues, quizzes, listening games and a Word Bank","No account, no ads, no tracking"],
+  price="Unit 1 is free. Pro unlocks all units and games (monthly or yearly, with a free trial for new subscribers).", kw="learn Spanish in Arabic, تعلم الإسبانية, Spanish for Arabic speakers, Spain"),
+ dict(slug="watermelon-scanner", name="Watermelon Scanner", id="6784476557",
+  icon="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b5/62/0b/b5620b52-0f65-65b8-1913-37ab3c1db6a7/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+  tag="Pick a ripe watermelon with your iPhone camera", ar="",
+  intro="Watermelon Scanner uses your iPhone camera and AI to instantly score watermelon ripeness: no guessing, no tapping, no wasted melons. Point, tap, know.",
+  for_="Farmers markets, grocery shopping, backyard BBQs, and anyone who wants a perfectly ripe watermelon every time.",
+  feats=["Free scan: photograph a watermelon and get a Ripeness Score (0-100) based on color, field spot and skin texture, with expert tips","Pro scan ($2.99 one-time): guided 3-step analysis of overhead color, field spot photo and stem condition, with a detailed breakdown by category","Scan history: every scan is saved with its photo and score so you can compare melons","No account required, no data collected, works entirely on your device"],
+  price="Free scan included. Pro scan is a $2.99 one-time purchase.", kw="watermelon ripeness, ripe watermelon, how to pick a watermelon, watermelon scanner"),
+]
+CSS = """:root{--teal:#1b7a72;--gold:#e6a817;--cream:#fdf8ee}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:#24312e;line-height:1.6}
+header{background:linear-gradient(135deg,var(--teal),#12524c);color:#fff;text-align:center;padding:48px 20px}header h1{margin:0 0 8px;font-size:2rem}header p{max-width:620px;margin:0 auto;opacity:.95}
+main{max-width:880px;margin:0 auto;padding:28px 20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.07)}.card img,.hero img{width:84px;height:84px;border-radius:20px}
+.card h2{font-size:1.1rem;margin:10px 0 4px}.card p{margin:0 0 10px;font-size:.95rem}a{color:var(--teal)}.btn{display:inline-block;background:var(--gold);color:#24312e;padding:10px 18px;border-radius:10px;font-weight:700;text-decoration:none}
+.hero{display:flex;gap:18px;align-items:center;margin-bottom:12px}.hero h1{margin:0}footer{text-align:center;padding:30px 20px;font-size:.9rem;opacity:.8}li{margin:4px 0}[dir=rtl]{text-align:right}"""
+def page(title, desc, path, body, ld=None):
+    canon = f"{BASE}/{path}"
+    j = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
+    return f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{canon}">
+<meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:type" content="website"><meta property="og:url" content="{canon}">
+<style>{CSS}</style>{j}</head><body>{body}<footer>&copy; 2026 Athir Maroki &middot; <a href="{DEV}">All apps on the App Store</a> &middot; <a href="{BASE}/">Home</a></footer></body></html>"""
+def store(a): return f"https://apps.apple.com/us/app/id{a['id']}"
+# home
+cards = "".join(f"""<div class="card"><img src="{a['icon']}" alt="{html.escape(a['name'])} app icon" loading="lazy"><h2><a href="{a['slug']}.html">{html.escape(a['name'])}</a></h2><p>{html.escape(a['tag'])}</p><a class="btn" href="{store(a)}">Get on the App Store</a></div>""" for a in APPS)
+home = page("Easy Language Apps by Athir Maroki — Chaldean, Iraqi Arabic, Spanish, German and Watermelon Scanner", "Fun, cartoon-style language apps with real native voices: Chaldean (Soorath), Iraqi Arabic, Mexican Spanish, German and Spanish for Arabic speakers. Free to download on iPhone and iPad.", "",
+ f"""<header><h1>Easy Language Apps</h1><p>Learn to speak, not just to read. Real native voices, cartoon guides and 5-15 minute daily lessons.</p></header><main><div class="grid">{cards}</div>
+<h2>Articles</h2><ul><li><a href="articles/learn-chaldean-soorath.html">How to learn spoken Chaldean (Soorath)</a></li><li><a href="articles/iraqi-arabic-dialect-vs-msa.html">Iraqi Arabic dialect vs Modern Standard Arabic</a></li><li><a href="articles/learn-german-for-arabic-speakers-a1.html">Learn German for Arabic speakers: your A1 roadmap</a></li><li><a href="articles/learn-spanish-in-spain-for-arabic-speakers.html">Learn Spanish in Spain, in Arabic</a></li><li><a href="articles/mexican-spanish-for-beginners.html">Mexican Spanish for beginners</a></li><li><a href="articles/how-to-pick-a-ripe-watermelon.html">How to pick a ripe watermelon</a></li></ul></main>""",
+ {"@context":"https://schema.org","@type":"Person","name":"Athir Maroki","url":BASE+"/","sameAs":[DEV]})
+open("index.html","w",encoding="utf-8").write(home)
+urls=[BASE+"/"]
+for a in APPS:
+    rtl = f'<p dir="rtl" lang="ar"><strong>{a["ar"]}</strong></p>' if a["ar"] else ""
+    feats="".join(f"<li>{html.escape(f)}</li>" for f in a["feats"])
+    body=f"""<header><h1>{html.escape(a['name'])}</h1><p>{html.escape(a['tag'])}</p></header><main><div class="hero"><img src="{a['icon']}" alt="{html.escape(a['name'])} app icon"><a class="btn" href="{store(a)}">Download on the App Store</a></div>{rtl}
+<p>{html.escape(a['intro'])}</p><h2>What's inside</h2><ul>{feats}</ul><h2>Who it's for</h2><p>{html.escape(a['for_'])}</p><h2>Price</h2><p>{html.escape(a['price'])}</p><p><a class="btn" href="{store(a)}">Get {html.escape(a['name'])}</a></p><p><a href="{BASE}/">&larr; All apps</a></p></main>"""
+    ld={"@context":"https://schema.org","@type":"MobileApplication","name":a["name"],"operatingSystem":"iOS","applicationCategory":"EducationalApplication","description":a["intro"],"url":store(a),"image":a["icon"],"author":{"@type":"Person","name":"Athir Maroki"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    open(a["slug"]+".html","w",encoding="utf-8").write(page(f"{a['name']} — {a['tag']}", a["intro"][:155], a["slug"]+".html", body, ld)); urls.append(f"{BASE}/{a['slug']}.html")
+# articles
+A={x["slug"]:x for x in APPS}
+def L(slug): return f'<a href="../{slug}.html">{html.escape(A[slug]["name"])}</a>'
+ART=[
+("learn-chaldean-soorath","How to Learn Spoken Chaldean (Soorath): A Beginner's Guide","A practical beginner's guide to learning spoken Chaldean, also called Soorath, with tips on listening, family conversation and daily practice.",
+ [("Why spoken Chaldean is hard to learn","Chaldean, also called Soorath, Sureth or Chaldean Neo-Aramaic, is spoken at home by many Iraqi Christian families, but it has very few learning resources written for English speakers. Most materials focus on the written language or assume you already read the script. If your goal is to talk with your grandparents, you need audio first."),
+  ("Start with listening, not reading","Spoken languages are learned through the ear. Pick a few everyday words, such as greetings and family words, and hear them from native speakers many times before worrying about spelling. Hearing both male and female voices also helps, because some forms change with the speaker."),
+  ("Build a 10-minute daily habit","Short, regular practice beats long, occasional sessions. Five to fifteen minutes a day with greetings, family, food and the body is enough to start understanding simple conversations within weeks."),
+  ("Practice with real dialogues","Words stick when you hear them in context. Two-speaker dialogues, such as a friendly uncle greeting a neighbor, show you how phrases are really used, and proverbs add cultural meaning."),
+  ("A tool built for this","The app "+L("chaldean-easy")+" was built for exactly this: 24 units of spoken Chaldean for English speakers, recorded by native speakers, with games, flashcards, dialogues and a Kids Mode. Unit 1 is free, so you can try it before deciding.")]),
+("iraqi-arabic-dialect-vs-msa","Iraqi Arabic Dialect vs Modern Standard Arabic: Which Should You Learn?","Why many learners choose the Iraqi dialect over Modern Standard Arabic if their goal is to talk with family and friends.",
+ [("Two different goals","Modern Standard Arabic (MSA) is the formal language of news, books and speeches. Iraqi Arabic is the dialect people actually speak at home, at the market and with friends. If you want to talk to Iraqi relatives, the dialect is usually the better first step."),
+  ("What changes in the dialect","Vocabulary, pronunciation and everyday phrases differ from MSA. Textbook Arabic can leave you understood but sounding stiff, and sometimes not understood at all in casual conversation."),
+  ("How to learn the dialect","Learn from native Iraqi voices, practice short real-life phrases (greetings, family, food, shopping), and listen to conversations between two speakers so you hear the rhythm."),
+  ("An app for the dialect",L("learn-iraqi-arabic-easy")+" teaches 800+ real Iraqi words and phrases across 65+ lessons, recorded by native Iraqi speakers, with dialogues, simple grammar and games. It is free to download.")]),
+("learn-german-for-arabic-speakers-a1","Learn German for Arabic Speakers: Your A1 Roadmap","A roadmap for Arabic speakers learning German to level A1, with exam practice tips and pronunciation help in Arabic letters.",
+ [("What A1 means","A1 is the first level of the European language framework. It covers greetings, numbers, shopping, appointments, simple forms and talking about the past in basic terms. Many people need A1 for a family visa."),
+  ("Learn in your own language","Explanations in Arabic remove a big barrier. Pronunciation written in Arabic letters lets you read German aloud from day one, and Arabic translations of answers explain why each answer is right."),
+  ("Practice the four exam parts","A1 exams test listening, reading, writing and speaking. Practice each part with short exercises and keep key phrases such as introductions, numbers and times ready."),
+  ("The app",L("german-easy-arabic-edition")+" has 76 lessons in 14 units covering A1, A1 exam practice with Arabic explanations (its own practice material, not official exam questions), funny everyday dialogues and a journey map across Germany. Unit 1 is free and the monthly plan has a 3-day free trial.")]),
+("learn-spanish-in-spain-for-arabic-speakers","Learn Spanish in Spain, in Arabic: A Guide for Newcomers","A guide for Arabic speakers moving to Spain: the Spanish you need for offices, banks, work and daily life.",
+ [("The Spanish you need first","Newcomers need greetings, numbers, restaurants, transport and the doctor, plus the vocabulary of paperwork: empadronamiento, NIE and TIE, opening a bank account, phone and internet."),
+  ("Two grammar traps","Ser vs estar and tú vs usted confuse many learners. Learn them with short examples, in your own language."),
+  ("Learn with Arabic support",L("isbani-sahl-learn-spanish")+" (إسباني سهل) has 60 lessons in 11 units, entirely in Arabic, with a picture, Spanish audio, Arabic audio and an Arabic-letter pronunciation hint for every word. Unit 1 is free.")]),
+("mexican-spanish-for-beginners","Mexican Spanish for Beginners: Speak Real, Everyday Spanish","A short beginner's guide to Mexican Spanish: pronunciation, stress and everyday vocabulary for travel and family.",
+ [("Why Mexican Spanish","Mexican Spanish is spoken across Mexico and the Southwest US. Learning it helps you travel, work and connect with family and neighbors."),
+  ("Watch the stress","A common beginner mistake is stressing the wrong syllable. Pronunciation hints for every new word help you get it right."),
+  ("Learn by talking","Short daily lessons on family, food, numbers, colors, the market and the restaurant, plus dialogues between native speakers, build conversation faster than grammar drills."),
+  ("Try it",L("learn-mexican-spanish-easy")+" uses native-voice audio for every word, games, quizzes and Kids Mode, with no account, no ads and no data collection. Free to download.")]),
+("how-to-pick-a-ripe-watermelon","How to Pick a Ripe Watermelon: Color, Field Spot and Stem","Simple signs of a ripe watermelon (color, field spot, skin texture and stem) and how a phone scan can help.",
+ [("Look at the color","A ripe watermelon usually has a deep, even color with a dull rather than shiny skin. Very shiny skin often means it was picked early."),
+  ("Find the field spot","The field spot is the patch where the melon rested on the ground. A creamy yellow spot is a better sign than a white or pale green one."),
+  ("Check the stem and texture","A dry, brownish stem and a firm, evenly textured skin suggest a melon that matured on the vine."),
+  ("Let your phone help",L("watermelon-scanner")+" scores ripeness from 0 to 100 from a photo of the melon, using color, field spot and skin texture. The free scan gives an instant score and tips, and the Pro scan ($2.99 one-time) adds a guided 3-step breakdown. No account is needed and it works on your device.")]),
+]
+for slug,title,desc,secs in ART:
+    b="".join(f"<h2>{html.escape(h)}</h2><p>{t}</p>" for h,t in secs)
+    body=f"<header><h1>{html.escape(title)}</h1></header><main>{b}<p><a href=\"../index.html\">&larr; All apps</a></p></main>"
+    os.makedirs("articles",exist_ok=True)
+    p=page(title,desc,f"articles/{slug}.html",body,{"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Person","name":"Athir Maroki"},"datePublished":"2026-11-01"})
+    p=p.replace('href="../index.html"','href="../index.html"').replace(f'<a href="{BASE}/">Home</a>',f'<a href="{BASE}/">Home</a>')
+    open(f"articles/{slug}.html","w",encoding="utf-8").write(p); urls.append(f"{BASE}/articles/{slug}.html")
+open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{u}</loc></url>" for u in urls)+"</urlset>")
+open("robots.txt","w").write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
+print("built", len(urls), "pages")

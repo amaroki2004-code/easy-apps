@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amaroki2004-code.github.io/easy-apps/sitemap.xml
