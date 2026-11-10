@@ -1,0 +1,27 @@
+# Easy Language Apps by Athir Maroki
+
+> Independent iPhone apps for learning spoken languages, especially heritage languages of Iraqi and Arabic-speaking families. Native-speaker audio, games and short daily lessons.
+
+## Apps
+
+- [Chaldean Easy](https://amaroki2004-code.github.io/easy-apps/chaldean-easy.html): Chaldean Easy is an app built specifically to teach spoken Chaldean (Soorath / Syriac / Assyrian) to English speakers, with real human voices, easy English transliteration, cartoon characters and bite-sized daily lessons. App Store: https://apps.apple.com/us/app/id6796100193
+- [Learn Iraqi Arabic Easy](https://amaroki2004-code.github.io/easy-apps/learn-iraqi-arabic-easy.html): Most Arabic apps teach Modern Standard Arabic, the formal language of news and textbooks. Learn Iraqi Arabic Easy teaches the everyday Iraqi dialect spoken by family and friends, recorded by real native Iraqi speakers. App Store: https://apps.apple.com/us/app/id6807597152
+- [Learn Mexican Spanish Easy](https://amaroki2004-code.github.io/easy-apps/learn-mexican-spanish-easy.html): Spanish Easy gets you speaking real, everyday Mexican Spanish through short daily lessons instead of grammar drills. App Store: https://apps.apple.com/us/app/id6811497071
+- [German Easy: Arabic Edition](https://amaroki2004-code.github.io/easy-apps/german-easy-arabic-edition.html): German Easy is the German course built for Arabic speakers, from zero to level A1. Every explanation and menu is in Arabic, every German word and sentence has clear German audio, and pronunciation is written in Arabic letters so you can read German from day one. App Store: https://apps.apple.com/us/app/id6821470658
+- [Isbani Sahl – Learn Spanish](https://amaroki2004-code.github.io/easy-apps/isbani-sahl-learn-spanish.html): Isbani Sahl (إسباني سهل) teaches the Spanish spoken in Spain to Arabic speakers. The whole app, including menus, explanations and word meanings, is in Arabic. App Store: https://apps.apple.com/us/app/id6824751092
+- [Watermelon Scanner](https://amaroki2004-code.github.io/easy-apps/watermelon-scanner.html): Watermelon Scanner uses your iPhone camera and AI to instantly score watermelon ripeness: no guessing, no tapping, no wasted melons. Point, tap, know. App Store: https://apps.apple.com/us/app/id6784476557
+
+## Guides
+
+- [How Many People Speak Chaldean? Where They Live and Why to Learn It](https://amaroki2004-code.github.io/easy-apps/articles/how-many-people-speak-chaldean.html): How many people speak Chaldean Neo-Aramaic (Soorath), where Chaldean communities live today, from the Nineveh Plains to Metro Detroit and El Cajon, and why learning the language matters now.
+- [How to Learn Spoken Chaldean (Soorath): A Beginner's Guide](https://amaroki2004-code.github.io/easy-apps/articles/learn-chaldean-soorath.html): A practical beginner's guide to learning spoken Chaldean, also called Soorath, with tips on listening, family conversation and daily practice.
+- [Iraqi Arabic Dialect vs Modern Standard Arabic: Which Should You Learn?](https://amaroki2004-code.github.io/easy-apps/articles/iraqi-arabic-dialect-vs-msa.html): Why many learners choose the Iraqi dialect over Modern Standard Arabic if their goal is to talk with family and friends.
+- [Learn German for Arabic Speakers: Your A1 Roadmap](https://amaroki2004-code.github.io/easy-apps/articles/learn-german-for-arabic-speakers-a1.html): A roadmap for Arabic speakers learning German to level A1, with exam practice tips and pronunciation help in Arabic letters.
+- [Learn Spanish in Spain, in Arabic: A Guide for Newcomers](https://amaroki2004-code.github.io/easy-apps/articles/learn-spanish-in-spain-for-arabic-speakers.html): A guide for Arabic speakers moving to Spain: the Spanish you need for offices, banks, work and daily life.
+- [Mexican Spanish for Beginners: Speak Real, Everyday Spanish](https://amaroki2004-code.github.io/easy-apps/articles/mexican-spanish-for-beginners.html): A short beginner's guide to Mexican Spanish: pronunciation, stress and everyday vocabulary for travel and family.
+- [How to Pick a Ripe Watermelon: Color, Field Spot and Stem](https://amaroki2004-code.github.io/easy-apps/articles/how-to-pick-a-ripe-watermelon.html): Simple signs of a ripe watermelon (color, field spot, skin texture and stem) and how a phone scan can help.
+
+## Developer
+
+- Athir Maroki, independent developer, Michigan, USA
+- All apps: https://apps.apple.com/us/developer/athir-maroki/id6784476559

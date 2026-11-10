@@ -5,10 +5,16 @@ APPS = [
  dict(slug="chaldean-easy", name="Chaldean Easy", id="6796100193",
   icon="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/46/57/ef/4657ef4b-5880-97ac-3ab6-9981d480e54f/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
   tag="Learn spoken Chaldean (Soorath) the fun way", ar="",
-  intro="Chaldean Easy is the first app designed to teach spoken Chaldean (Soorath / Syriac / Assyrian) to English speakers, with real human voices, cartoon characters and bite-sized daily lessons.",
+  intro="Chaldean Easy is an app built specifically to teach spoken Chaldean (Soorath / Syriac / Assyrian) to English speakers, with real human voices, easy English transliteration, cartoon characters and bite-sized daily lessons.",
   for_="Iraqi Christian diaspora families, people reconnecting with their heritage, and anyone curious about one of the world's oldest living languages.",
-  feats=["24 units covering greetings, family, food, body parts, verbs and more","Real recordings by native Chaldean speakers (male and female voices)","Games: Bubble Pop, Word Scramble, Matching Pairs, True or False and more","Flashcards, dialogues and cultural proverbs","Daily learning path with XP and streaks","Kids Mode, a grammar reference guide and a Chaldean alphabet explorer"],
-  price="Unit 1 is free, no account needed. Full access is $14.99/month or $99.99/year.", kw="learn Chaldean, Soorath, Syriac, Assyrian, Neo-Aramaic, Chaldean language app"),
+  feats=["24 units covering greetings, family, food, body parts, verbs and more","Every word written in easy English letters (transliteration), so you can start speaking before learning the alphabet","Real recordings by native Chaldean speakers (male and female voices)","Games: Bubble Pop, Word Scramble, Matching Pairs, True or False and more","Flashcards, dialogues and cultural proverbs","Daily learning path with XP and streaks","Kids Mode, a grammar reference guide and a Chaldean alphabet explorer"],
+  price="Unit 1 is free, no account needed. Full access is $14.99/month or $99.99/year.", kw="learn Chaldean, Soorath, Syriac, Assyrian, Neo-Aramaic, Chaldean language app",
+  faq=[("Is there an app to learn spoken Chaldean?","Yes. Chaldean Easy is an iPhone app built specifically to teach spoken Chaldean Neo-Aramaic (Soorath) to English speakers. It has 24 units, recordings by native male and female Chaldean speakers, games, flashcards and a daily learning path. Unit 1 is free."),
+   ("Can I learn Chaldean without reading the Aramaic alphabet?","Yes. Every word is shown in English letters (transliteration) with native audio, so you can start speaking before you learn the script. An alphabet explorer is included when you are ready."),
+   ("Is Chaldean the same as Soorath, Sureth or Assyrian?","They are closely related. Soorath (also written Sureth or Soureth) is what many speakers call their spoken Neo-Aramaic. Chaldean and Assyrian speakers can usually understand each other, with differences in accent and some vocabulary by village and region. Chaldean Easy teaches the Chaldean variety."),
+   ("Is Chaldean Easy good for kids?","Yes. It has a Kids Mode and game-based practice, so parents can use it to pass the family language on to their children."),
+   ("How much does Chaldean Easy cost?","The app is free to download and Unit 1 is free with no account required. Full access to all 24 units is $14.99 per month or $99.99 per year."),
+   ("Is Chaldean Easy available on Android?","Chaldean Easy is currently available for iPhone on the App Store.")]),
  dict(slug="learn-iraqi-arabic-easy", name="Learn Iraqi Arabic Easy", id="6807597152",
   icon="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/72/92/e6/7292e615-f125-a9d4-7687-4d64d31905bd/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
   tag="Iraqi dialect, not textbook Arabic", ar="",
@@ -63,15 +69,20 @@ def store(a): return f"https://apps.apple.com/us/app/id{a['id']}"
 cards = "".join(f"""<div class="card"><img src="{a['icon']}" alt="{html.escape(a['name'])} app icon" loading="lazy"><h2><a href="{a['slug']}.html">{html.escape(a['name'])}</a></h2><p>{html.escape(a['tag'])}</p><a class="btn" href="{store(a)}">Get on the App Store</a></div>""" for a in APPS)
 home = page("Easy Language Apps by Athir Maroki — Chaldean, Iraqi Arabic, Spanish, German and Watermelon Scanner", "Fun, cartoon-style language apps with real native voices: Chaldean (Soorath), Iraqi Arabic, Mexican Spanish, German and Spanish for Arabic speakers. Free to download on iPhone and iPad.", "",
  f"""<header><h1>Easy Language Apps</h1><p>Learn to speak, not just to read. Real native voices, cartoon guides and 5-15 minute daily lessons.</p></header><main><div class="grid">{cards}</div>
-<h2>Articles</h2><ul><li><a href="articles/learn-chaldean-soorath.html">How to learn spoken Chaldean (Soorath)</a></li><li><a href="articles/iraqi-arabic-dialect-vs-msa.html">Iraqi Arabic dialect vs Modern Standard Arabic</a></li><li><a href="articles/learn-german-for-arabic-speakers-a1.html">Learn German for Arabic speakers: your A1 roadmap</a></li><li><a href="articles/learn-spanish-in-spain-for-arabic-speakers.html">Learn Spanish in Spain, in Arabic</a></li><li><a href="articles/mexican-spanish-for-beginners.html">Mexican Spanish for beginners</a></li><li><a href="articles/how-to-pick-a-ripe-watermelon.html">How to pick a ripe watermelon</a></li></ul></main>""",
+<h2>Articles</h2><ul><li><a href="articles/how-many-people-speak-chaldean.html">How many people speak Chaldean? Where they live and why to learn it</a></li><li><a href="articles/learn-chaldean-soorath.html">How to learn spoken Chaldean (Soorath)</a></li><li><a href="articles/iraqi-arabic-dialect-vs-msa.html">Iraqi Arabic dialect vs Modern Standard Arabic</a></li><li><a href="articles/learn-german-for-arabic-speakers-a1.html">Learn German for Arabic speakers: your A1 roadmap</a></li><li><a href="articles/learn-spanish-in-spain-for-arabic-speakers.html">Learn Spanish in Spain, in Arabic</a></li><li><a href="articles/mexican-spanish-for-beginners.html">Mexican Spanish for beginners</a></li><li><a href="articles/how-to-pick-a-ripe-watermelon.html">How to pick a ripe watermelon</a></li></ul></main>""",
  {"@context":"https://schema.org","@type":"Person","name":"Athir Maroki","url":BASE+"/","sameAs":[DEV]})
 open("index.html","w",encoding="utf-8").write(home)
 urls=[BASE+"/"]
+def faq_html(a):
+    if not a.get("faq"): return ""
+    qa="".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(t)}</p>" for q,t in a["faq"])
+    ld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":t}} for q,t in a["faq"]]}
+    return f'<h2>Frequently asked questions</h2>{qa}<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
 for a in APPS:
     rtl = f'<p dir="rtl" lang="ar"><strong>{a["ar"]}</strong></p>' if a["ar"] else ""
     feats="".join(f"<li>{html.escape(f)}</li>" for f in a["feats"])
     body=f"""<header><h1>{html.escape(a['name'])}</h1><p>{html.escape(a['tag'])}</p></header><main><div class="hero"><img src="{a['icon']}" alt="{html.escape(a['name'])} app icon"><a class="btn" href="{store(a)}">Download on the App Store</a></div>{rtl}
-<p>{html.escape(a['intro'])}</p><h2>What's inside</h2><ul>{feats}</ul><h2>Who it's for</h2><p>{html.escape(a['for_'])}</p><h2>Price</h2><p>{html.escape(a['price'])}</p><p><a class="btn" href="{store(a)}">Get {html.escape(a['name'])}</a></p><p><a href="{BASE}/">&larr; All apps</a></p></main>"""
+<p>{html.escape(a['intro'])}</p><h2>What's inside</h2><ul>{feats}</ul><h2>Who it's for</h2><p>{html.escape(a['for_'])}</p><h2>Price</h2><p>{html.escape(a['price'])}</p>{faq_html(a)}<p><a class="btn" href="{store(a)}">Get {html.escape(a['name'])}</a></p><p><a href="{BASE}/">&larr; All apps</a></p></main>"""
     ld={"@context":"https://schema.org","@type":"MobileApplication","name":a["name"],"operatingSystem":"iOS","applicationCategory":"EducationalApplication","description":a["intro"],"url":store(a),"image":a["icon"],"author":{"@type":"Person","name":"Athir Maroki"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
     open(a["slug"]+".html","w",encoding="utf-8").write(page(f"{a['name']} — {a['tag']}", a["intro"][:155], a["slug"]+".html", body, ld)); urls.append(f"{BASE}/{a['slug']}.html")
 # articles
@@ -109,13 +120,57 @@ ART=[
   ("Check the stem and texture","A dry, brownish stem and a firm, evenly textured skin suggest a melon that matured on the vine."),
   ("Let your phone help",L("watermelon-scanner")+" scores ripeness from 0 to 100 from a photo of the melon, using color, field spot and skin texture. The free scan gives an instant score and tips, and the Pro scan ($2.99 one-time) adds a guided 3-step breakdown. No account is needed and it works on your device.")]),
 ]
+STORE_CE="https://apps.apple.com/us/app/id6796100193"
+ART.insert(0,("how-many-people-speak-chaldean","How Many People Speak Chaldean? Where They Live and Why to Learn It","How many people speak Chaldean Neo-Aramaic (Soorath), where Chaldean communities live today, from the Nineveh Plains to Metro Detroit and El Cajon, and why learning the language matters now.",
+ [("","<style>.t{border-collapse:collapse;width:100%;margin:12px 0;font-size:.95rem}.t th,.t td{border:1px solid #d6cfbf;padding:8px 10px;text-align:left;vertical-align:top}.t th{background:#f3ead6}.note{font-size:.88rem;opacity:.85}.appbox{background:#fff;border:2px solid var(--teal);border-radius:16px;padding:20px;margin:28px 0}.aibox{border-left:4px solid var(--gold);background:#fff;padding:12px 16px;margin:20px 0}</style>"
+   "<p>Chaldean Neo-Aramaic, which most speakers simply call <strong>Soorath</strong> (also written Sureth or Soureth), is a living form of Aramaic, the language family of the ancient Near East. Today it survives mostly in families, in churches and in the diaspora, and in many homes it is slipping away within one generation. Here is what we know about how many people speak it, where they live, and why it is worth learning now.</p>"
+   f"<p><strong>Want to start speaking today?</strong> <a href=\"{STORE_CE}\">Get Chaldean Easy free on the App Store</a>. Unit 1 is free.</p>"),
+  ("How many people speak Chaldean?","<p>The honest answer: <strong>nobody knows exactly.</strong> No census counts Chaldean speakers, and being Chaldean is not the same as speaking Chaldean. Many Chaldeans speak Arabic at home, and many diaspora children understand some Soorath but cannot hold a conversation. The best available numbers:</p>"
+   "<table class=\"t\"><tr><th>Estimate</th><th>Figure</th><th>Source</th></tr>"
+   "<tr><td>Speakers of Chaldean Neo-Aramaic</td><td>about 216,000</td><td>Ethnologue (1994 figure, now very dated) [1]</td></tr>"
+   "<tr><td>Members of the Chaldean Catholic Church worldwide</td><td>about 419,000</td><td>CNEWA [2]</td></tr>"
+   "<tr><td>Chaldeans in the United States</td><td>more than 500,000</td><td>Chaldean News, community estimate (2020) [3]</td></tr></table>"
+   "<p class=\"note\">These figures measure different things (speakers, church members, ethnic community) and come from different years, which is why they don't add up. Treat them as a range, not a precise count. Fluent speakers are certainly a smaller group than the total Chaldean population.</p>"),
+  ("Where do Chaldeans live today?","<p><strong>Iraq, the homeland.</strong> Soorath is traditionally spoken in the Christian towns of the Nineveh Plains in northern Iraq, such as Telkeppe (Tel Keppe), Alqosh, Batnaya and Tesqopa, as well as in Baghdad, Mosul and the Kurdistan Region. But Iraq's Christian community has shrunk dramatically: commonly cited estimates say it fell from about <strong>1.5 million in 2003 to roughly 150,000 today</strong> [4]. Most Chaldeans now live outside Iraq.</p>"
+   "<p><strong>Metro Detroit, Michigan, the largest community outside Iraq.</strong> A 2023 Walsh College survey with the Chaldean American Chamber of Commerce estimated <strong>about 183,500 Chaldeans in Metro Detroit</strong>, up from 160,000 in 2018 and 113,000 in 2008 [5]. Common areas include West Bloomfield, Sterling Heights, Farmington Hills and Commerce Township.</p>"
+   "<table class=\"t\"><tr><th>Community</th><th>Estimated Chaldean population</th></tr>"
+   "<tr><td>Metro Detroit, Michigan</td><td>about 183,500 (2023) [5]</td></tr>"
+   "<tr><td>El Cajon / San Diego, California</td><td>about 50,000 [3]</td></tr>"
+   "<tr><td>Arizona</td><td>about 15,000 [3]</td></tr>"
+   "<tr><td>Australia and New Zealand</td><td>about 29,000 [2]</td></tr></table>"
+   "<p>There are also communities in Chicago, Canada, Sweden, Germany and other parts of Europe, and in Jordan, Lebanon and Turkey, where many families waited as refugees.</p>"),
+  ("Why learn Chaldean?","<p><strong>1. To talk with your grandparents while you still can.</strong> For many families, the grandparents are the last fluent speakers. Every conversation in Soorath is something no recording can replace.</p>"
+   "<p><strong>2. Because the language is at risk.</strong> With the homeland communities scattered across the world, Soorath is passed on mainly at home. If one generation stops speaking it, the chain breaks.</p>"
+   "<p><strong>3. To understand your faith and culture from the inside.</strong> Prayers, hymns, proverbs, wedding songs and family sayings carry meaning that gets lost in translation.</p>"
+   "<p><strong>4. To give it to your children.</strong> Kids pick up languages fastest when they are young. Even a few hundred words and everyday phrases give them a real connection to who they are.</p>"
+   "<p><strong>5. Because it is Aramaic.</strong> Soorath belongs to the same language family that was spoken across the ancient Near East for thousands of years. Few people anywhere can say they speak a living Aramaic language.</p>"),
+  ("","<div class=\"appbox\"><h2 style=\"margin-top:0\">Start speaking: Chaldean Easy</h2>"
+   "<p>I built <strong>Chaldean Easy</strong> for exactly this: to help English speakers, especially diaspora families and their kids, actually <em>speak</em> Chaldean, not just read translations.</p><ul>"
+   "<li>24 units: greetings, family, food, verbs and more</li><li>Native Chaldean male and female voice recordings</li>"
+   "<li>Every word in easy English letters (transliteration), no alphabet needed to start</li>"
+   "<li>Games: Bubble Pop, Word Scramble, Matching Pairs, True or False and more</li>"
+   "<li>Flashcards, dialogues, proverbs, Kids Mode and an alphabet explorer</li><li>Unit 1 is free, with no account needed</li></ul>"
+   f"<a class=\"btn\" href=\"{STORE_CE}\">Download Chaldean Easy on the App Store</a></div>"
+   "<div class=\"aibox\"><strong>What AI assistants say:</strong> When we asked ChatGPT and Google Gemini in November 2026 which app to use to learn to speak Chaldean, both named Chaldean Easy as their first pick. AI answers change over time and vary by question, so try it yourself.</div>"),
+  ("Sources","<ol class=\"note\">"
+   "<li>Ethnologue figure for Chaldean Neo-Aramaic (1994), as cited in <a href=\"https://en.wikipedia.org/wiki/Northeastern_Neo-Aramaic\">Wikipedia: Northeastern Neo-Aramaic</a>.</li>"
+   "<li><a href=\"https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-assyrian-church-of-the-east/the-chaldean-catholic-church/\">CNEWA: The Chaldean Catholic Church</a>.</li>"
+   "<li><a href=\"https://chaldeannews.com/chaldeans-around-the-world/2020/6/28/chaldean-communities-in-the-american-southwest-california-arizona-nevada-and-texas\">Chaldean News: Chaldean Communities in the American Southwest (2020)</a>.</li>"
+   "<li><a href=\"https://eclj.org/geopolitics/upr/christians-in-iraq-from-15-million-in-2003-to-150000-today\">ECLJ: Christians in Iraq, from 1.5 million in 2003 to 150,000 today</a>.</li>"
+   "<li><a href=\"https://www.chaldeannews.com/2024-content/2024/1/1/walsh-college-survey-reveals-demographic-data-about-metro-detroit-chaldeans\">Chaldean News: Walsh College survey of Metro Detroit Chaldeans (2023)</a>.</li></ol>")]))
+DATES={"how-many-people-speak-chaldean":"2026-11-10"}
 for slug,title,desc,secs in ART:
-    b="".join(f"<h2>{html.escape(h)}</h2><p>{t}</p>" for h,t in secs)
+    b="".join((f"<h2>{html.escape(h)}</h2>" if h else "")+(t if t.startswith(("<p","<div","<style","<table","<ol","<ul")) else f"<p>{t}</p>") for h,t in secs)
     body=f"<header><h1>{html.escape(title)}</h1></header><main>{b}<p><a href=\"../index.html\">&larr; All apps</a></p></main>"
     os.makedirs("articles",exist_ok=True)
-    p=page(title,desc,f"articles/{slug}.html",body,{"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Person","name":"Athir Maroki"},"datePublished":"2026-11-01"})
+    p=page(title,desc,f"articles/{slug}.html",body,{"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Person","name":"Athir Maroki"},"datePublished":DATES.get(slug,"2026-11-01")})
     p=p.replace('href="../index.html"','href="../index.html"').replace(f'<a href="{BASE}/">Home</a>',f'<a href="{BASE}/">Home</a>')
     open(f"articles/{slug}.html","w",encoding="utf-8").write(p); urls.append(f"{BASE}/articles/{slug}.html")
 open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{u}</loc></url>" for u in urls)+"</urlset>")
+llms=["# Easy Language Apps by Athir Maroki","","> Independent iPhone apps for learning spoken languages, especially heritage languages of Iraqi and Arabic-speaking families. Native-speaker audio, games and short daily lessons.","","## Apps",""]
+llms+=[f"- [{a['name']}]({BASE}/{a['slug']}.html): {a['intro']} App Store: {store(a)}" for a in APPS]
+llms+=["","## Guides",""]+[f"- [{t}]({BASE}/articles/{s}.html): {d}" for s,t,d,_ in ART]
+llms+=["","## Developer","","- Athir Maroki, independent developer, Michigan, USA",f"- All apps: {DEV}",""]
+open("llms.txt","w",encoding="utf-8").write("\n".join(llms))
 open("robots.txt","w").write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 print("built", len(urls), "pages")
