@@ -15,6 +15,17 @@ APPS = [
    ("Is Chaldean Easy good for kids?","Yes. It has a Kids Mode and game-based practice, so parents can use it to pass the family language on to their children."),
    ("How much does Chaldean Easy cost?","The app is free to download and Unit 1 is free with no account required. Full access to all 24 units is $14.99 per month or $99.99 per year."),
    ("Is Chaldean Easy available on Android?","Chaldean Easy is currently available for iPhone on the App Store.")]),
+ dict(slug="america-easy-learn-english", name="America Easy – Learn English", id="6832024234",
+  icon="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/38/e4/6b/38e46b7b-be9f-dcaf-7f89-eee14c126b57/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+  tag="Practical American English for Arabic speakers", ar="أمريكا سهلة — الإنجليزية العملية للحياة في أمريكا، بالعربي",
+  intro="America Easy (أمريكا سهلة) teaches Arabic speakers the American English they need in real life: the bank, the DMV, the doctor, school, renting an apartment and job interviews. The whole app, including menus, explanations and word meanings, is in Arabic.",
+  for_="Arabs living in the US, and people getting ready to move there for work, study or to join family.",
+  feats=["57 lessons in 8 levels, on a road trip across America from New York to Los Angeles","Real-life situations: renting an apartment, the bank, the DMV and your driver's license, jobs and job interviews, your kids' school, the doctor and pharmacy, government offices, money and bills","Spelling your name, email and address in English: \"How do you spell that?\"","Every word has a picture, clear American audio, the Arabic meaning and a pronunciation hint written in Arabic letters","Tips for the sounds Arabic speakers find hard: P, V, TH and CH","Short dialogues, quizzes, listening games, a Word Bank, Kids Mode and Sahl, your travel buddy","No account, no ads, no tracking"],
+  price="Level 1 is free, plus two preview lessons from later levels. Pro unlocks all levels and games for $7.99/month or $59.99/year, with a free trial for new subscribers.", kw="learn English for Arabic speakers, تعلم الانجليزية, American English, English for life in America",
+  faq=[("Is there an app to learn practical English for life in America, in Arabic?","Yes. America Easy (أمريكا سهلة) teaches Arabic speakers the English they need for daily life in the US: the bank, the DMV, the doctor and pharmacy, the kids' school, renting an apartment and job interviews. All menus and explanations are in Arabic."),
+   ("Do I need to know any English to start?","No. Every word comes with a picture, American audio, the Arabic meaning and a pronunciation hint written in Arabic letters, so complete beginners can start from Level 1."),
+   ("Does America Easy help with hard English sounds like P, V and TH?","Yes. It includes tips for the sounds Arabic speakers often find difficult, such as P, V, TH and CH."),
+   ("How much does America Easy cost?","Level 1 and two preview lessons are free. Pro unlocks all 57 lessons for $7.99 per month or $59.99 per year, with a free trial for new subscribers.")]),
  dict(slug="learn-iraqi-arabic-easy", name="Learn Iraqi Arabic Easy", id="6807597152",
   icon="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/72/92/e6/7292e615-f125-a9d4-7687-4d64d31905bd/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
   tag="Iraqi dialect, not textbook Arabic", ar="",
@@ -57,10 +68,10 @@ main{max-width:880px;margin:0 auto;padding:28px 20px}.grid{display:grid;grid-tem
 .card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.07)}.card img,.hero img{width:84px;height:84px;border-radius:20px}
 .card h2{font-size:1.1rem;margin:10px 0 4px}.card p{margin:0 0 10px;font-size:.95rem}a{color:var(--teal)}.btn{display:inline-block;background:var(--gold);color:#24312e;padding:10px 18px;border-radius:10px;font-weight:700;text-decoration:none}
 .hero{display:flex;gap:18px;align-items:center;margin-bottom:12px}.hero h1{margin:0}footer{text-align:center;padding:30px 20px;font-size:.9rem;opacity:.8}li{margin:4px 0}[dir=rtl]{text-align:right}"""
-def page(title, desc, path, body, ld=None):
+def page(title, desc, path, body, ld=None, lang="en"):
     canon = f"{BASE}/{path}"
     j = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
-    return f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    return f"""<!DOCTYPE html><html lang="{lang}"{' dir="rtl"' if lang=="ar" else ""}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{canon}">
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:type" content="website"><meta property="og:url" content="{canon}">
 <style>{CSS}</style>{j}</head><body>{body}<footer>&copy; 2026 Athir Maroki &middot; <a href="{DEV}">All apps on the App Store</a> &middot; <a href="{BASE}/">Home</a></footer></body></html>"""
@@ -69,7 +80,7 @@ def store(a): return f"https://apps.apple.com/us/app/id{a['id']}"
 cards = "".join(f"""<div class="card"><img src="{a['icon']}" alt="{html.escape(a['name'])} app icon" loading="lazy"><h2><a href="{a['slug']}.html">{html.escape(a['name'])}</a></h2><p>{html.escape(a['tag'])}</p><a class="btn" href="{store(a)}">Get on the App Store</a></div>""" for a in APPS)
 home = page("Easy Language Apps by Athir Maroki — Chaldean, Iraqi Arabic, Spanish, German and Watermelon Scanner", "Fun, cartoon-style language apps with real native voices: Chaldean (Soorath), Iraqi Arabic, Mexican Spanish, German and Spanish for Arabic speakers. Free to download on iPhone and iPad.", "",
  f"""<header><h1>Easy Language Apps</h1><p>Learn to speak, not just to read. Real native voices, cartoon guides and 5-15 minute daily lessons.</p></header><main><div class="grid">{cards}</div>
-<h2>Articles</h2><ul><li><a href="articles/how-many-people-speak-chaldean.html">How many people speak Chaldean? Where they live and why to learn it</a></li><li><a href="articles/learn-chaldean-soorath.html">How to learn spoken Chaldean (Soorath)</a></li><li><a href="articles/iraqi-arabic-dialect-vs-msa.html">Iraqi Arabic dialect vs Modern Standard Arabic</a></li><li><a href="articles/learn-german-for-arabic-speakers-a1.html">Learn German for Arabic speakers: your A1 roadmap</a></li><li><a href="articles/learn-spanish-in-spain-for-arabic-speakers.html">Learn Spanish in Spain, in Arabic</a></li><li><a href="articles/mexican-spanish-for-beginners.html">Mexican Spanish for beginners</a></li><li><a href="articles/how-to-pick-a-ripe-watermelon.html">How to pick a ripe watermelon</a></li></ul></main>""",
+<h2>Articles</h2><ul><li><a href="articles/how-many-people-speak-chaldean.html">How many people speak Chaldean? Where they live and why to learn it</a></li><li><a href="articles/practical-english-for-life-in-america-arabic.html" lang="ar" dir="rtl">الإنجليزية العملية للحياة في أمريكا (بالعربي)</a></li><li><a href="articles/english-sounds-arabic-speakers-p-v-th.html" lang="ar" dir="rtl">أصعب أصوات الإنجليزية على العرب: P و V و TH (بالعربي)</a></li><li><a href="articles/learn-german-for-beginners-arabic.html" lang="ar" dir="rtl">تعلّم الألمانية للمبتدئين حتى A1 (بالعربي)</a></li><li><a href="articles/common-iraqi-arabic-phrases.html">25 everyday Iraqi Arabic phrases</a></li><li><a href="articles/learn-chaldean-soorath.html">How to learn spoken Chaldean (Soorath)</a></li><li><a href="articles/iraqi-arabic-dialect-vs-msa.html">Iraqi Arabic dialect vs Modern Standard Arabic</a></li><li><a href="articles/learn-german-for-arabic-speakers-a1.html">Learn German for Arabic speakers: your A1 roadmap</a></li><li><a href="articles/learn-spanish-in-spain-for-arabic-speakers.html">Learn Spanish in Spain, in Arabic</a></li><li><a href="articles/mexican-spanish-for-beginners.html">Mexican Spanish for beginners</a></li><li><a href="articles/how-to-pick-a-ripe-watermelon.html">How to pick a ripe watermelon</a></li></ul></main>""",
  {"@context":"https://schema.org","@type":"Person","name":"Athir Maroki","url":BASE+"/","sameAs":[DEV]})
 open("index.html","w",encoding="utf-8").write(home)
 urls=[BASE+"/"]
@@ -158,12 +169,222 @@ ART.insert(0,("how-many-people-speak-chaldean","How Many People Speak Chaldean? 
    "<li><a href=\"https://chaldeannews.com/chaldeans-around-the-world/2020/6/28/chaldean-communities-in-the-american-southwest-california-arizona-nevada-and-texas\">Chaldean News: Chaldean Communities in the American Southwest (2020)</a>.</li>"
    "<li><a href=\"https://eclj.org/geopolitics/upr/christians-in-iraq-from-15-million-in-2003-to-150000-today\">ECLJ: Christians in Iraq, from 1.5 million in 2003 to 150,000 today</a>.</li>"
    "<li><a href=\"https://www.chaldeannews.com/2024-content/2024/1/1/walsh-college-survey-reveals-demographic-data-about-metro-detroit-chaldeans\">Chaldean News: Walsh College survey of Metro Detroit Chaldeans (2023)</a>.</li></ol>")]))
-DATES={"how-many-people-speak-chaldean":"2026-11-10"}
+DATES={"how-many-people-speak-chaldean":"2026-11-09"}
+# ---- Extra articles (Nov 2026) ----
+TSTYLE = "<style>.t{border-collapse:collapse;width:100%;margin:12px 0;font-size:.95rem}.t th,.t td{border:1px solid #d6cfbf;padding:8px 10px;vertical-align:top}.t th{background:#f3ead6}.t td.en{direction:ltr;text-align:left;font-weight:600}.note{font-size:.88rem;opacity:.85}.appbox{background:#fff;border:2px solid var(--teal);border-radius:16px;padding:20px;margin:28px 0}.tip{border-inline-start:4px solid var(--gold);background:#fff;padding:12px 16px;margin:20px 0}</style>"
+
+def rows(pairs, en_first=True):
+    """pairs: (english, arabic) -> table rows; English cell is LTR."""
+    return "".join(f'<tr><td class="en">{html.escape(e)}</td><td>{html.escape(a)}</td></tr>' for e, a in pairs)
+
+def table_ar(pairs):
+    return f'<table class="t"><tr><th>بالإنجليزية</th><th>المعنى</th></tr>{rows(pairs)}</table>'
+
+def appbox(slug, heading, text, items, cta):
+    li = "".join(f"<li>{html.escape(i)}</li>" for i in items)
+    return f'<div class="appbox"><h2 style="margin-top:0">{html.escape(heading)}</h2><p>{text}</p><ul>{li}</ul><a class="btn" href="{store(A[slug])}">{html.escape(cta)}</a></div>'
+
+A = {x["slug"]: x for x in APPS}
+AM = "america-easy-learn-english"
+
+ART.insert(1, ("practical-english-for-life-in-america-arabic",
+ "الإنجليزية العملية للحياة في أمريكا: جمل تحتاجها من أول يوم",
+ "أهم الجمل الإنجليزية التي يحتاجها العرب في أمريكا: البنك، الـDMV، الطبيب والصيدلية، مدرسة الأولاد، استئجار شقة، مقابلة العمل والطوارئ، مع المعنى بالعربي.",
+ [("", TSTYLE +
+   "<p>إذا انتقلت إلى أمريكا أو تعيش فيها حديثاً، فأنت لا تحتاج إلى قواعد معقدة في البداية. تحتاج إلى جمل قصيرة وواضحة تستخدمها في البنك، وعند الطبيب، وفي مدرسة أولادك، وفي مقابلة العمل. هذه أهم الجمل التي ستسمعها وتقولها في أول أسابيعك، مع معناها بالعربي.</p>"
+   f'<p><strong>تريد أن تتدرب عليها بالصوت؟</strong> <a href="{store(A[AM])}">حمّل تطبيق أمريكا سهلة مجاناً من App Store</a>. المستوى الأول مجاني.</p>'),
+  ("١. التهجئة: اسمك وإيميلك وعنوانك",
+   "<p>أكثر سؤال ستسمعه في أمريكا هو كيف تكتب اسمك. تعلّم الحروف الإنجليزية بصوت عالٍ، وجهّز هذه الجمل:</p>" + table_ar([
+    ("How do you spell that?", "كيف تكتب ذلك؟ (اسمك أو كلمة)"),
+    ("My last name is ...", "اسم عائلتي هو ..."),
+    ("Could you repeat that, please?", "هل يمكنك أن تعيد ذلك من فضلك؟"),
+    ("Could you speak more slowly, please?", "هل يمكنك أن تتكلم ببطء من فضلك؟"),
+    ("at / dot com", "علامة @ تُنطق \"at\" والنقطة تُنطق \"dot\""),
+    ("What's your date of birth?", "ما تاريخ ميلادك؟"),
+    ("What's your zip code?", "ما الرمز البريدي لعنوانك؟")])),
+  ("٢. في البنك",
+   table_ar([
+    ("I'd like to open a checking account.", "أريد أن أفتح حساباً جارياً."),
+    ("What documents do I need?", "ما الأوراق التي أحتاجها؟"),
+    ("savings account", "حساب توفير"),
+    ("debit card", "بطاقة السحب المرتبطة بحسابك"),
+    ("I'd like to deposit this check.", "أريد أن أودع هذا الشيك."),
+    ("What is the monthly fee?", "كم الرسوم الشهرية؟")])),
+  ("٣. في الـDMV ورخصة القيادة",
+   "<p>الـDMV (أو Secretary of State في ميشيغان) هو المكتب المسؤول عن رخص القيادة وتسجيل السيارات.</p>" + table_ar([
+    ("I'd like to make an appointment.", "أريد أن أحجز موعداً."),
+    ("I'm here to apply for a driver's license.", "جئت لأقدّم على رخصة قيادة."),
+    ("the written test / the road test", "الامتحان النظري / امتحان القيادة العملي"),
+    ("proof of address", "إثبات العنوان (مثل فاتورة باسمك)"),
+    ("vision test", "فحص النظر"),
+    ("Which line should I wait in?", "في أي طابور يجب أن أنتظر؟")])),
+  ("٤. عند الطبيب والصيدلية",
+   table_ar([
+    ("I have an appointment at 10.", "عندي موعد الساعة العاشرة."),
+    ("I'm a new patient.", "أنا مريض جديد."),
+    ("Do you accept my insurance?", "هل تقبلون تأميني الصحي؟"),
+    ("It hurts here.", "يؤلمني هنا."),
+    ("I'm allergic to ...", "عندي حساسية من ..."),
+    ("I'm here to pick up a prescription.", "جئت لأستلم وصفة طبية (دواء)."),
+    ("How often should I take it?", "كم مرة يجب أن آخذه؟")])),
+  ("٥. مدرسة الأولاد",
+   table_ar([
+    ("I'd like to enroll my child.", "أريد أن أسجّل ابني/ابنتي في المدرسة."),
+    ("My son will be absent today.", "ابني سيغيب اليوم."),
+    ("parent-teacher conference", "اجتماع الأهل مع المعلم"),
+    ("What time is pick-up?", "متى موعد استلام الأطفال؟"),
+    ("Does the school have ESL classes?", "هل في المدرسة صفوف إنجليزية لغير الناطقين بها؟")])),
+  ("٦. استئجار شقة",
+   table_ar([
+    ("Is this apartment still available?", "هل هذه الشقة ما زالت متاحة؟"),
+    ("How much is the rent?", "كم الإيجار؟"),
+    ("lease", "عقد الإيجار"),
+    ("security deposit", "التأمين (مبلغ يُدفع مقدماً)"),
+    ("Are utilities included?", "هل الماء والكهرباء والغاز مشمولة؟"),
+    ("landlord", "صاحب الشقة / المؤجر")])),
+  ("٧. العمل ومقابلة العمل",
+   table_ar([
+    ("Tell me about yourself.", "حدّثني عن نفسك. (أول سؤال تقريباً في كل مقابلة)"),
+    ("I have five years of experience in ...", "عندي خمس سنوات خبرة في ..."),
+    ("full-time / part-time", "دوام كامل / دوام جزئي"),
+    ("When can you start?", "متى يمكنك أن تبدأ؟"),
+    ("I can start next Monday.", "أستطيع أن أبدأ يوم الإثنين القادم."),
+    ("Do you have any questions for us?", "هل عندك أي أسئلة لنا؟")])),
+  ("٨. الطوارئ",
+   "<p>رقم الطوارئ في أمريكا هو <strong>911</strong> للشرطة والإسعاف والإطفاء.</p>" + table_ar([
+    ("I need an ambulance.", "أحتاج سيارة إسعاف."),
+    ("My address is ...", "عنواني هو ..."),
+    ("There's been an accident.", "حصل حادث."),
+    ("I don't speak English well. Arabic, please.", "لا أتكلم الإنجليزية جيداً. العربية من فضلك.")]) +
+   "<div class=\"tip\"><strong>نصيحة:</strong> كثير من المستشفيات والمكاتب الحكومية توفّر مترجماً مجاناً. قل: <span dir=\"ltr\"><strong>I need an Arabic interpreter, please.</strong></span> (أحتاج مترجماً للعربية من فضلك.)</div>"),
+  ("", appbox(AM, "تدرّب على هذه الجمل مع أمريكا سهلة",
+    "بنيت تطبيق <strong>أمريكا سهلة</strong> لهذا الهدف بالضبط: الإنجليزية التي تحتاجها فعلاً في الحياة اليومية في أمريكا، وكل الشرح بالعربي.",
+    ["57 درساً في 8 مستويات، في رحلة من نيويورك إلى لوس أنجلوس",
+     "البنك، الـDMV، الطبيب والصيدلية، المدرسة، السكن، العمل ومقابلات العمل",
+     "لكل كلمة صورة وصوت أمريكي واضح والمعنى بالعربي ونطق مكتوب بحروف عربية",
+     "نصائح لأصعب الأصوات على العرب: P و V و TH و CH",
+     "المستوى الأول مجاني، بلا حساب وبلا إعلانات"],
+    "حمّل أمريكا سهلة من App Store") +
+   "<p class=\"note\">هذا المقال لتعلّم اللغة فقط، وليس نصيحة قانونية أو مالية. المتطلبات تختلف من ولاية إلى أخرى.</p>")]))
+
+ART.insert(2, ("english-sounds-arabic-speakers-p-v-th",
+ "لماذا يصعب على العرب نطق P و V و TH و CH؟ وكيف تتدرّب عليها",
+ "شرح بالعربي لأصعب أصوات الإنجليزية على المتحدثين بالعربية: P و V و TH و CH، مع كلمات للتدريب ونصائح عملية.",
+ [("", TSTYLE +
+   "<p>إذا قلت <span dir=\"ltr\"><strong>bark</strong></span> وأنت تقصد <span dir=\"ltr\"><strong>park</strong></span>، فأنت لست وحدك. بعض أصوات الإنجليزية غير موجودة في العربية الفصحى، فيستبدلها دماغنا بأقرب صوت يعرفه. الخبر الجيد: هذه الأخطاء معروفة ولها حلول سهلة.</p>"),
+  ("صوت P (مثل park)",
+   "<p>العربية ليس فيها P، لذلك نقولها غالباً B. الفرق أن P تخرج <strong>بنفخة هواء</strong> ومن دون اهتزاز في الحلق.</p>"
+   "<p><strong>التمرين:</strong> ضع يدك أمام فمك وقل <span dir=\"ltr\">park</span>. يجب أن تشعر بنفخة هواء. ثم قل <span dir=\"ltr\">bark</span>: النفخة أضعف بكثير.</p>" +
+   '<table class="t"><tr><th>P</th><th>B</th></tr>' + "".join(f'<tr><td class="en">{a}</td><td class="en">{b}</td></tr>' for a, b in [("park", "bark"), ("pay", "bay"), ("pill", "bill"), ("pet", "bet")]) + "</table>"),
+  ("صوت V (مثل very)",
+   "<p>نقولها كثيراً مثل F. الحل: ضع أسنانك العلوية على شفتك السفلى، تماماً كما تقول ف، لكن <strong>شغّل صوتك</strong> حتى تشعر باهتزاز في الشفة.</p>" +
+   '<table class="t"><tr><th>V</th><th>F</th></tr>' + "".join(f'<tr><td class="en">{a}</td><td class="en">{b}</td></tr>' for a, b in [("very", "fairy"), ("van", "fan"), ("vote", "photo"), ("live", "leaf")]) + "</table>"),
+  ("صوت TH: عندك ميزة",
+   "<p>هنا العرب عندهم ميزة حقيقية: صوتا TH موجودان في العربية.</p><ul>"
+   "<li><span dir=\"ltr\"><strong>think, three, thank you</strong></span>: مثل حرف <strong>ث</strong></li>"
+   "<li><span dir=\"ltr\"><strong>this, that, mother</strong></span>: مثل حرف <strong>ذ</strong></li></ul>"
+   "<p>المشكلة أن كثيراً من اللهجات تنطق ث وذ مثل س وز أو ت ود. إذا كنت تقول <span dir=\"ltr\">\"tank you\"</span> أو <span dir=\"ltr\">\"sank you\"</span>، فتذكّر فقط: <strong>ث</strong> كما في الفصحى، واللسان بين الأسنان.</p>"),
+  ("صوت CH (مثل chair)",
+   "<p>صوت CH هو <strong>تش</strong>. أهل العراق والخليج عندهم ميزة هنا، لأن حرف <strong>چ</strong> في لهجتهم هو نفس الصوت تقريباً (چاي). لا تخلطه مع SH (ش):</p>" +
+   '<table class="t"><tr><th>CH (تش)</th><th>SH (ش)</th></tr>' + "".join(f'<tr><td class="en">{a}</td><td class="en">{b}</td></tr>' for a, b in [("chair", "share"), ("watch", "wash"), ("cheap", "sheep"), ("chip", "ship")]) + "</table>"),
+  ("خطة تدريب ٥ دقائق يومياً",
+   "<ol><li>اختر صوتاً واحداً فقط كل أسبوع.</li><li>اسمع الكلمة من متحدث أمريكي ثم كرّرها بصوت عالٍ ٥ مرات.</li>"
+   "<li>سجّل صوتك على الهاتف وقارنه بالأصل.</li><li>استخدم الكلمة في جملة حقيقية في نفس اليوم.</li></ol>"),
+  ("", appbox(AM, "تدرّب بالصوت مع أمريكا سهلة",
+    "تطبيق <strong>أمريكا سهلة</strong> فيه نصائح خاصة بالأصوات الصعبة على العرب، ولكل كلمة صوت أمريكي واضح ونطق مكتوب بحروف عربية.",
+    ["57 درساً للحياة اليومية في أمريكا", "صوت أمريكي واضح لكل كلمة", "نصائح لأصوات P و V و TH و CH", "المستوى الأول مجاني"],
+    "حمّل أمريكا سهلة من App Store"))]))
+
+ART.insert(3, ("learn-german-for-beginners-arabic",
+ "تعلّم اللغة الألمانية للمبتدئين بالعربي: خطة واضحة للوصول إلى المستوى A1",
+ "دليل بالعربي لتعلّم الألمانية من الصفر حتى المستوى A1: ما هو A1، أصعب الأصوات، أول كلمات تحتاجها، وأقسام امتحان A1 الأربعة.",
+ [("", TSTYLE +
+   "<p>سواء كنت تستعد للسفر إلى ألمانيا أو النمسا أو سويسرا، أو تحتاج شهادة A1 لملفّك، فالبداية الصحيحة توفّر عليك أشهراً. هذا دليل بسيط بالعربي لأول خطواتك.</p>"
+   f'<p><strong>تريد أن تبدأ اليوم؟</strong> <a href="{store(A["german-easy-arabic-edition"])}">حمّل ألماني سهل مجاناً من App Store</a>. الوحدة الأولى مجانية.</p>'),
+  ("ما هو المستوى A1؟",
+   "<p>A1 هو أول مستوى في الإطار الأوروبي للغات. في هذا المستوى تستطيع أن تعرّف بنفسك، وتسأل وتجيب عن أشياء بسيطة مثل العنوان والعمل والعائلة، وتفهم جملاً قصيرة في التسوّق والمواعيد. في كثير من الحالات يُطلب A1 من الأزواج والزوجات في ملفات لمّ الشمل، لذلك تحقّق دائماً من المتطلبات الرسمية الخاصة بحالتك.</p>"),
+  ("أول كلمات وجمل تحتاجها",
+   '<table class="t"><tr><th>بالألمانية</th><th>المعنى</th></tr>' + rows([
+    ("Hallo / Guten Tag", "مرحباً / نهارك سعيد"),
+    ("Danke / Bitte", "شكراً / من فضلك أو عفواً"),
+    ("Entschuldigung", "عفواً، لو سمحت"),
+    ("Ich heiße ...", "اسمي ..."),
+    ("Ich komme aus ...", "أنا من ..."),
+    ("Wie geht's?", "كيف حالك؟"),
+    ("Ich verstehe nicht.", "لا أفهم."),
+    ("Sprechen Sie langsam, bitte.", "تكلّم ببطء من فضلك.")]) + "</table>"),
+  ("أصوات تحتاج انتباهاً",
+   "<ul><li><strong>ü و ö و ä</strong>: أصوات غير موجودة في العربية. استمع إليها كثيراً قبل أن تحاول نطقها.</li>"
+   "<li><strong>ch</strong>: في كلمة <span dir=\"ltr\">Ich</span> صوت خفيف قريب من الهمس، وفي <span dir=\"ltr\">Buch</span> قريب من <strong>خ</strong>.</li>"
+   "<li><strong>r</strong>: الألمانية غالباً تنطقها من الحلق، قريبة من <strong>غ</strong> خفيفة.</li>"
+   "<li><strong>w</strong>: تُنطق مثل V الإنجليزية، فـ<span dir=\"ltr\">Wasser</span> تبدأ بصوت \"ڤ\".</li></ul>"),
+  ("أقسام امتحان A1 الأربعة",
+   "<ul><li><strong>Hören</strong>: الاستماع</li><li><strong>Lesen</strong>: القراءة</li><li><strong>Schreiben</strong>: الكتابة (مثل تعبئة استمارة أو رسالة قصيرة)</li><li><strong>Sprechen</strong>: المحادثة (تعريف بالنفس وأسئلة بسيطة)</li></ul>"
+   "<p>تدرّب على الأقسام الأربعة كلها، ولا تترك المحادثة للنهاية.</p>"),
+  ("خطة ١٥ دقيقة يومياً",
+   "<ol><li>٥ دقائق: كلمات جديدة مع الصوت.</li><li>٥ دقائق: حوار قصير، اسمعه ثم كرّره.</li><li>٥ دقائق: مراجعة البطاقات والاختبارات القصيرة.</li></ol><p>الاستمرار يومياً أهم من الساعات الطويلة مرة في الأسبوع.</p>"),
+  ("", appbox("german-easy-arabic-edition", "ابدأ مع ألماني سهل",
+    "تطبيق <strong>ألماني سهل</strong> مصمّم للعرب: كل الشرح والقوائم بالعربي، ولكل كلمة صوت ألماني واضح، والنطق مكتوب بحروف عربية.",
+    ["76 درساً في 14 وحدة حتى المستوى A1",
+     "تدريب على أقسام امتحان A1 مع شرح بالعربي (مواد تدريبية خاصة بالتطبيق، وليست أسئلة امتحان رسمية)",
+     "حوارات قصيرة ومضحكة من الحياة اليومية في ألمانيا",
+     "الوحدة الأولى مجانية"],
+    "حمّل ألماني سهل من App Store"))]))
+
+ART.insert(4, ("common-iraqi-arabic-phrases",
+ "25 Everyday Iraqi Arabic Phrases (with Pronunciation)",
+ "25 common Iraqi Arabic phrases with Arabic script, easy pronunciation and English meaning, for heritage learners, spouses and travelers.",
+ [("", TSTYLE +
+   "<p>Iraqi Arabic sounds very different from the Modern Standard Arabic taught in most courses. If you want to talk with Iraqi family and friends, start with the phrases people actually use every day. Pronunciation below follows the Baghdadi dialect; accents vary by city and family.</p>"
+   f'<p><strong>Want to hear them spoken?</strong> <a href="{store(A["learn-iraqi-arabic-easy"])}">Get Learn Iraqi Arabic Easy on the App Store</a>, with native Iraqi voices.</p>'),
+  ("Greetings and small talk",
+   '<table class="t"><tr><th>Iraqi Arabic</th><th>Say it</th><th>Meaning</th></tr>' + "".join(f'<tr><td dir="rtl" lang="ar">{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in [
+    ("شلونك؟", "shlonak? (to a man) / shlonich? (to a woman)", "How are you?"),
+    ("زين، الحمد لله", "zein, il-hamdu lillah", "Good, thank God"),
+    ("شكو ماكو؟", "shaku maku?", "What's new? What's going on?"),
+    ("ماكو شي", "maku shi", "Nothing much"),
+    ("هلا والله", "hala wallah", "Hey, welcome! (warm greeting)"),
+    ("الله وياك", "allah wiyak", "Goodbye (God be with you)"),
+    ("تسلم", "tislam", "Thanks (bless you)"),
+    ("عيوني", "eyooni", "My dear (literally \"my eyes\")")]) + "</table>"),
+  ("Everyday words you'll hear constantly",
+   '<table class="t"><tr><th>Iraqi Arabic</th><th>Say it</th><th>Meaning</th></tr>' + "".join(f'<tr><td dir="rtl" lang="ar">{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in [
+    ("اكو / ماكو", "aku / maku", "There is / there isn't"),
+    ("شنو؟", "shinu?", "What?"),
+    ("وين؟", "wein?", "Where?"),
+    ("هسه", "hessa", "Now"),
+    ("باچر", "bachir", "Tomorrow"),
+    ("هواية", "hwaya", "A lot, very"),
+    ("خوش", "khosh", "Good, nice"),
+    ("أريد", "arid", "I want"),
+    ("يللا", "yalla", "Come on, let's go")]) + "</table>"),
+  ("At the table",
+   '<table class="t"><tr><th>Iraqi Arabic</th><th>Say it</th><th>Meaning</th></tr>' + "".join(f'<tr><td dir="rtl" lang="ar">{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in [
+    ("تمن", "timman", "Rice"),
+    ("خبز", "khubuz", "Bread"),
+    ("ماي", "mai", "Water"),
+    ("چاي", "chai", "Tea"),
+    ("بالعافية", "bil-afya", "Enjoy your meal / to your health"),
+    ("شبعت", "shbaat", "I'm full"),
+    ("طيب هواية", "tayyib hwaya", "Very tasty"),
+    ("كافي", "kafi", "Enough, that's enough")]) + "</table>"
+   "<p class=\"note\">Iraqi Arabic uses the letter چ (ch) and گ (g), which don't exist in standard Arabic: <em>chai</em> (tea) and <em>bachir</em> (tomorrow) use the ch sound.</p>"),
+  ("", appbox("learn-iraqi-arabic-easy", "Keep going with Learn Iraqi Arabic Easy",
+    "<strong>Learn Iraqi Arabic Easy</strong> teaches the dialect your family actually speaks, recorded by native Iraqi speakers.",
+    ["800+ real Iraqi Arabic words and phrases in 65+ lessons", "Animated two-speaker conversations", "Simple grammar: verbs, past tense, pronouns", "Flashcards, matching and fill-in-the-blank games"],
+    "Get Learn Iraqi Arabic Easy on the App Store"))]))
+
+LANG = {"practical-english-for-life-in-america-arabic": "ar", "english-sounds-arabic-speakers-p-v-th": "ar", "learn-german-for-beginners-arabic": "ar"}
+for _s in ["practical-english-for-life-in-america-arabic", "english-sounds-arabic-speakers-p-v-th", "learn-german-for-beginners-arabic", "common-iraqi-arabic-phrases"]:
+    DATES[_s] = "2026-11-09"
+
 for slug,title,desc,secs in ART:
     b="".join((f"<h2>{html.escape(h)}</h2>" if h else "")+(t if t.startswith(("<p","<div","<style","<table","<ol","<ul")) else f"<p>{t}</p>") for h,t in secs)
-    body=f"<header><h1>{html.escape(title)}</h1></header><main>{b}<p><a href=\"../index.html\">&larr; All apps</a></p></main>"
+    lg=LANG.get(slug,"en")
+    back="&larr; All apps" if lg=="en" else "كل التطبيقات &larr;"
+    body=f"<header><h1>{html.escape(title)}</h1></header><main>{b}<p><a href=\"../index.html\">{back}</a></p></main>"
     os.makedirs("articles",exist_ok=True)
-    p=page(title,desc,f"articles/{slug}.html",body,{"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Person","name":"Athir Maroki"},"datePublished":DATES.get(slug,"2026-11-01")})
+    p=page(title,desc,f"articles/{slug}.html",body,{"@context":"https://schema.org","@type":"Article","headline":title,"author":{"@type":"Person","name":"Athir Maroki"},"datePublished":DATES.get(slug,"2026-11-01")},lang=lg)
     p=p.replace('href="../index.html"','href="../index.html"').replace(f'<a href="{BASE}/">Home</a>',f'<a href="{BASE}/">Home</a>')
     open(f"articles/{slug}.html","w",encoding="utf-8").write(p); urls.append(f"{BASE}/articles/{slug}.html")
 open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{u}</loc></url>" for u in urls)+"</urlset>")
